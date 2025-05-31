@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cprlimx2mfe8p"]
+
+[ext_resource type="Shader" uid="uid://txr188f6aq5p" path="res://Shaders/neon_outline_effect.gdshader" id="1_h4vf5"]
+
+[resource]
+shader = ExtResource("1_h4vf5")
+shader_parameter/trail_color = Color(1, 0.00269282, 0.160439, 0.8)
+shader_parameter/trail_length = 0.438
+shader_parameter/trail_samples = 8
+shader_parameter/glow_intensity = 2.393
+shader_parameter/pulse_speed = 5.0
+shader_parameter/pulse_strength = 0.438
+shader_parameter/move_direction = Vector2(-1, 0)

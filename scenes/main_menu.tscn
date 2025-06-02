@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvvi20gljjf8c"]
+[gd_scene load_steps=11 format=3 uid="uid://dvvi20gljjf8c"]
 
 [ext_resource type="Material" uid="uid://cprlimx2mfe8p" path="res://Materials/neon_trail_material.tres" id="1_bqqt6"]
 [ext_resource type="Theme" uid="uid://blr4ndgixbup0" path="res://Themes/main_menu.tres" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://dbc6y6ahrnxyw" path="res://assets/VFX/neon2.png" id="3_8ln24"]
 [ext_resource type="Texture2D" uid="uid://32n48cq5b4px" path="res://assets/player/bullets/bullet-point.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://dvbwx6fgttpc2" path="res://assets/GIFs/SHaft.png" id="5_8ln24"]
+[ext_resource type="Script" uid="uid://5jct6he803bp" path="res://Scripts/menu_buttons.gd" id="6_rtw2f"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rtw2f"]
 particle_flag_disable_z = true
@@ -346,7 +347,7 @@ position = Vector2(182, 158.5)
 scale = Vector2(0.265741, 0.265741)
 texture = ExtResource("5_8ln24")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" node_paths=PackedStringArray("bt_newgame", "bt_loadgame", "bt_config", "bt_quit")]
 layout_mode = 2
 offset_left = 887.0
 offset_top = 302.0
@@ -354,6 +355,11 @@ offset_right = 1358.0
 offset_bottom = 699.0
 theme_override_constants/separation = 15
 alignment = 1
+script = ExtResource("6_rtw2f")
+bt_newgame = NodePath("Button")
+bt_loadgame = NodePath("Button2")
+bt_config = NodePath("Button3")
+bt_quit = NodePath("Button4")
 
 [node name="Button" type="Button" parent="Background/VBoxContainer"]
 layout_mode = 2

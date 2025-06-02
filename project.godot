@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="ShaftWars"
+run/main_scene="uid://bt0udxdbcnmto"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bl5ovsuaieib1"
 
@@ -18,8 +19,8 @@ config/icon="uid://bl5ovsuaieib1"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=1366
-window/size/window_height_override=720
+window/size/window_width_override=1100
+window/size/window_height_override=650
 window/stretch/mode="canvas_items"
 
 [rendering]

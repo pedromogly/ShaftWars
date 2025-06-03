@@ -15,7 +15,7 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	fly_movement(delta)
-	fly_rotate(delta)
+	fly_rotate()
 
 func fly_movement(delta):
 	var movement_direction = Input.get_vector("left","right","up","down")
@@ -28,9 +28,9 @@ func fly_movement(delta):
 	
 	movement_speed = clamp(movement_speed,0,max_speed)
 	print()
-	position += last_direction * movement_speed * player.velocity_base * delta
+	position += last_direction * (movement_speed+player.velocity_base) * delta
 
-func fly_rotate(delta):
+func fly_rotate():
 	var mouse_position = get_global_mouse_position()
 	
 	body_base.look_at(mouse_position)

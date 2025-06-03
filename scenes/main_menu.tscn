@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvvi20gljjf8c"]
+[gd_scene load_steps=13 format=3 uid="uid://dvvi20gljjf8c"]
 
 [ext_resource type="Material" uid="uid://cprlimx2mfe8p" path="res://Materials/neon_trail_material.tres" id="1_bqqt6"]
 [ext_resource type="Theme" uid="uid://blr4ndgixbup0" path="res://Themes/main_menu.tres" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://dbc6y6ahrnxyw" path="res://assets/VFX/neon2.png" id="3_8ln24"]
 [ext_resource type="Texture2D" uid="uid://32n48cq5b4px" path="res://assets/player/bullets/bullet-point.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://dvbwx6fgttpc2" path="res://assets/GIFs/SHaft.png" id="5_8ln24"]
-[ext_resource type="Script" uid="uid://5jct6he803bp" path="res://Scripts/menu_buttons.gd" id="6_rtw2f"]
+[ext_resource type="Script" uid="uid://5jct6he803bp" path="res://scripts/menu_buttons.gd" id="6_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://fntdnqnt13f3" path="res://assets/UI/Icons/suport.png" id="7_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://brm23d2wpryae" path="res://assets/UI/Icons/terms-and-conditions.png" id="8_jk1qb"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rtw2f"]
 particle_flag_disable_z = true
@@ -349,10 +351,10 @@ texture = ExtResource("5_8ln24")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background" node_paths=PackedStringArray("bt_newgame", "bt_loadgame", "bt_config", "bt_quit")]
 layout_mode = 2
-offset_left = 887.0
-offset_top = 302.0
-offset_right = 1358.0
-offset_bottom = 699.0
+offset_left = 903.0
+offset_top = 331.0
+offset_right = 1374.0
+offset_bottom = 728.0
 theme_override_constants/separation = 15
 alignment = 1
 script = ExtResource("6_rtw2f")
@@ -391,3 +393,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_oa1go")
 }
 autoplay = "menu_shafts_1"
+
+[node name="Suport" type="Sprite2D" parent="."]
+position = Vector2(1857, 55)
+texture = ExtResource("7_tbmy8")
+
+[node name="Terms-and-conditions" type="Sprite2D" parent="."]
+position = Vector2(1858, 125)
+texture = ExtResource("8_jk1qb")

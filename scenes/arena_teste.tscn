@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjnlt7fvsx4hm"]
+
+[ext_resource type="Script" uid="uid://b486s7fbw42ps" path="res://scripts/player_gameplay.gd" id="1_rgdql"]
+[ext_resource type="Texture2D" uid="uid://u5s4ttq8ju4n" path="res://assets/player/arrow_idle.png" id="2_ge46i"]
+
+[node name="arena_teste" type="Node2D"]
+
+[node name="Player" type="Node2D" parent="." node_paths=PackedStringArray("sprite", "body_base")]
+script = ExtResource("1_rgdql")
+sprite = NodePath("Base/Sprite")
+body_base = NodePath("Base")
+
+[node name="Area" type="Area2D" parent="Player"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Area"]
+polygon = PackedVector2Array(-47, -73, 57, 1, -46, 73, -57, 57, -34, 0, -57, -60)
+
+[node name="Base" type="Node2D" parent="Player"]
+
+[node name="Sprite" type="Sprite2D" parent="Player/Base"]
+scale = Vector2(0.274414, 0.274414)
+texture = ExtResource("2_ge46i")

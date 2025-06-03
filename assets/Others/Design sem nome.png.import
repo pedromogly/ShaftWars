@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br8g0nwxkvhfm"
-path="res://.godot/imported/neon.png-e50efd33977d0a952048a1b2eff6f56a.ctex"
+uid="uid://dxj6b2sr1fsa2"
+path="res://.godot/imported/Design sem nome.png-f32801854de090014ed93e3cdf33f8d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/VFX/neon.png"
-dest_files=["res://.godot/imported/neon.png-e50efd33977d0a952048a1b2eff6f56a.ctex"]
+source_file="res://assets/Others/Design sem nome.png"
+dest_files=["res://.godot/imported/Design sem nome.png-f32801854de090014ed93e3cdf33f8d6.ctex"]
 
 [params]
 

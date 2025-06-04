@@ -27,6 +27,7 @@ window/size/viewport_height=1080
 window/size/window_width_override=1100
 window/size/window_height_override=650
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -55,3 +56,4 @@ down={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

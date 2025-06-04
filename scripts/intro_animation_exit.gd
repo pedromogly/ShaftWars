@@ -1,6 +1,6 @@
 extends Control
 
-@onready var sprite:Sprite2D = $DbVer1_
+@export var sprite:Sprite2D
 var fade_speed = 0.5
 var letsExit = false
 

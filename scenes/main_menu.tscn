@@ -258,9 +258,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1932.0
-offset_bottom = 1093.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 12.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.0887341, 0.0887341, 0.0887341, 1)
 
 [node name="bullets" type="Node2D" parent="Background"]
@@ -329,17 +334,39 @@ position = Vector2(-55.9998, 968)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_wu84c")
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.937271
+anchor_top = 0.00640439
+anchor_right = 0.993271
+anchor_bottom = 0.0974044
+offset_left = 234.192
+offset_top = 30.0
+offset_right = 185.0
+offset_bottom = 31.537
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Suport" type="Sprite2D" parent="Background/VBoxContainer2"]
+position = Vector2(-167, 3)
+texture = ExtResource("7_tbmy8")
+
+[node name="Terms-and-conditions" type="Sprite2D" parent="Background/VBoxContainer2"]
+position = Vector2(-166, 73)
+texture = ExtResource("8_jk1qb")
+
 [node name="PanelContainer" type="PanelContainer" parent="Background"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -552.0
-offset_top = -330.0
-offset_right = 552.0
-offset_bottom = 330.0
+anchors_preset = -1
+anchor_left = 0.214
+anchor_top = 0.198
+anchor_right = 0.786
+anchor_bottom = 0.802
+offset_left = 0.551971
+offset_top = 0.0859833
+offset_right = -0.552002
+offset_bottom = -0.0860596
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_l6cm7")
@@ -351,10 +378,14 @@ texture = ExtResource("5_8ln24")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background" node_paths=PackedStringArray("bt_newgame", "bt_loadgame", "bt_config", "bt_quit")]
 layout_mode = 2
-offset_left = 903.0
-offset_top = 331.0
-offset_right = 1374.0
-offset_bottom = 728.0
+anchor_left = 0.467
+anchor_top = 0.303
+anchor_right = 0.711
+anchor_bottom = 0.666
+offset_left = 0.755981
+offset_top = -0.179016
+offset_right = 0.3479
+offset_bottom = 0.0620117
 theme_override_constants/separation = 15
 alignment = 1
 script = ExtResource("6_rtw2f")
@@ -393,11 +424,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_oa1go")
 }
 autoplay = "menu_shafts_1"
-
-[node name="Suport" type="Sprite2D" parent="."]
-position = Vector2(1857, 55)
-texture = ExtResource("7_tbmy8")
-
-[node name="Terms-and-conditions" type="Sprite2D" parent="."]
-position = Vector2(1858, 125)
-texture = ExtResource("8_jk1qb")

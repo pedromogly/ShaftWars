@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DbVer1_:material:shader_parameter/strength")
+tracks/0/path = NodePath("ColorRect/Container/DbVer1_:material:shader_parameter/strength")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DbVer1_:material")
+tracks/1/path = NodePath("ColorRect/Container/DbVer1_:material")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DbVer1_:material:shader")
+tracks/2/path = NodePath("ColorRect/Container/DbVer1_:material:shader")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -51,7 +51,7 @@ length = 2.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DbVer1_:material:shader_parameter/strength")
+tracks/0/path = NodePath("ColorRect/Container/DbVer1_:material:shader_parameter/strength")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,7 +63,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DbVer1_:material")
+tracks/1/path = NodePath("ColorRect/Container/DbVer1_:material")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -75,7 +75,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DbVer1_:material:shader")
+tracks/2/path = NodePath("ColorRect/Container/DbVer1_:material:shader")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -91,7 +91,7 @@ _data = {
 &"offblur": SubResource("Animation_i87bh")
 }
 
-[node name="intro_game" type="Control"]
+[node name="intro_game" type="Control" node_paths=PackedStringArray("sprite")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,16 +99,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_sdeyp")
+sprite = NodePath("ColorRect/Container/DbVer1_")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1936.0
-offset_bottom = 1097.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.008
+anchor_bottom = 1.0
+offset_right = 0.640015
+offset_bottom = 17.0
 color = Color(0.0756672, 0.0756672, 0.0756672, 1)
 
-[node name="DbVer1_" type="Sprite2D" parent="."]
+[node name="Container" type="Container" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -28.5
+offset_right = 20.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DbVer1_" type="Sprite2D" parent="ColorRect/Container"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_sdeyp")
-position = Vector2(965, 548)
+position = Vector2(29, 22)
 scale = Vector2(1.194, 1.194)
 texture = ExtResource("2_sdeyp")
 

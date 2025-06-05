@@ -27,7 +27,6 @@ func fly_movement(delta):
 		movement_speed = move_toward(movement_speed,0,friction * delta)
 	
 	movement_speed = clamp(movement_speed,0,max_speed)
-	print()
 	position += last_direction * (movement_speed+player.velocity_base) * delta
 
 func fly_rotate():

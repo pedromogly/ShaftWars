@@ -13,8 +13,10 @@ config_version=5
 config/name="ShaftWars"
 run/main_scene="uid://bt0udxdbcnmto"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://dxj6b2sr1fsa2"
 config/icon="uid://bl5ovsuaieib1"
+boot_splash/minimum_display_time=500
 
 [autoload]
 
@@ -28,6 +30,7 @@ window/size/window_width_override=1100
 window/size/window_height_override=650
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://djdrmi2li63s"
 
 [input]
 
@@ -52,8 +55,13 @@ down={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

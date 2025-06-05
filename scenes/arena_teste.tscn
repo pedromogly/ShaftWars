@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjnlt7fvsx4hm"]
+[gd_scene load_steps=6 format=3 uid="uid://bjnlt7fvsx4hm"]
 
 [ext_resource type="Script" uid="uid://b486s7fbw42ps" path="res://scripts/player_gameplay.gd" id="1_rgdql"]
 [ext_resource type="Texture2D" uid="uid://u5s4ttq8ju4n" path="res://assets/player/arrow_idle.png" id="2_ge46i"]
+[ext_resource type="Script" uid="uid://0a1gtlao6jp3" path="res://scripts/control_player.gd" id="3_8qi1t"]
+[ext_resource type="Texture2D" uid="uid://wijmpjh7emrx" path="res://assets/UI/Icons/circle_control.png" id="3_ge46i"]
+[ext_resource type="Texture2D" uid="uid://ch7utj8n7xahx" path="res://assets/UI/Icons/circle_control_button.png" id="5_hsk6e"]
 
 [node name="arena_teste" type="Node2D"]
 
@@ -20,3 +23,46 @@ polygon = PackedVector2Array(-47, -73, 57, 1, -46, 73, -57, 57, -34, 0, -57, -60
 [node name="Sprite" type="Sprite2D" parent="Player/Base"]
 scale = Vector2(0.274414, 0.274414)
 texture = ExtResource("2_ge46i")
+
+[node name="UI" type="CanvasLayer" parent="Player"]
+
+[node name="Control" type="Control" parent="Player/UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Base" type="TextureRect" parent="Player/UI/Control" node_paths=PackedStringArray("stick")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.72
+anchor_right = 0.158
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 0.399963
+offset_right = -0.360016
+offset_bottom = -2.0
+grow_vertical = 0
+texture = ExtResource("3_ge46i")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("3_8qi1t")
+radius = 150.0
+stick = NodePath("Stick")
+
+[node name="Stick" type="TextureRect" parent="Player/UI/Control/Base"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.5
+offset_top = 102.5
+offset_right = -102.5
+offset_bottom = -102.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hsk6e")
+expand_mode = 1
+stretch_mode = 4

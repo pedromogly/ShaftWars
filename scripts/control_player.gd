@@ -24,7 +24,9 @@ func _input(event: InputEvent) -> void:
 			relative = relative.normalized() * radius
 		
 		direction = relative.normalized()
-		print(direction)
-		stick.position = (size/2) - (stick.size/2) + relative
-		emit_signal("move_direction",direction)
 		
+		stick.position = (size/2) - (stick.size/2) + relative
+		
+		
+func get_direction() -> Vector2:
+	return direction

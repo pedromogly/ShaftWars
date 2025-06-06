@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqaum5a741512"]
+
+[ext_resource type="Texture2D" uid="uid://wijmpjh7emrx" path="res://assets/UI/Icons/circle_control.png" id="1_wtkjn"]
+[ext_resource type="Script" uid="uid://0a1gtlao6jp3" path="res://scripts/control_player.gd" id="2_i2ph0"]
+[ext_resource type="Texture2D" uid="uid://ch7utj8n7xahx" path="res://assets/UI/Icons/circle_control_button.png" id="3_3lknu"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Base" type="TextureRect" parent="." node_paths=PackedStringArray("stick")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.72
+anchor_right = 0.158
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 0.399963
+offset_right = -0.360016
+offset_bottom = -2.0
+grow_vertical = 0
+texture = ExtResource("1_wtkjn")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("2_i2ph0")
+radius = 150.0
+stick = NodePath("Stick")
+
+[node name="Stick" type="TextureRect" parent="Base"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.5
+offset_top = 102.5
+offset_right = -102.5
+offset_bottom = -102.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3lknu")
+expand_mode = 1
+stretch_mode = 4

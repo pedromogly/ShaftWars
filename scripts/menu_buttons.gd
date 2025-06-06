@@ -6,6 +6,7 @@ extends VBoxContainer
 @export var bt_quit:Button
 
 func _ready():
+	
 	bt_quit.connect("button_up",quit_pressed)
 
 func quit_pressed():

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgv8lbi5egimq"]
+
+[ext_resource type="Shader" uid="uid://dwiywggyq0ufo" path="res://Shaders/stars.gdshader" id="1_4alcr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5wp1"]
+shader = ExtResource("1_4alcr")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.002
+shader_parameter/mediumStarAmount = 0.01
+shader_parameter/bigStarAmount = 0.02
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_k5wp1")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.995
+anchor_bottom = 1.0
+offset_left = -339.0
+offset_top = -245.0
+offset_right = 326.6
+offset_bottom = 266.0

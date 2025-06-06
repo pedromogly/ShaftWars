@@ -6,8 +6,6 @@ var touch_id:int = -1
 
 @export var stick:TextureRect
 
-signal move_direction(direction:Vector2)
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if event.pressed and touch_id == -1 and get_global_rect().has_point(event.position):
@@ -21,7 +19,7 @@ func _input(event: InputEvent) -> void:
 		var relative = event.position - center
 		
 		if relative.length() > radius:
-			relative = relative.normalized() * radius
+			relative = relative.normalized() * radius 
 		
 		direction = relative.normalized()
 		

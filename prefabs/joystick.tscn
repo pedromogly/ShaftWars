@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqaum5a741512"]
+[gd_scene load_steps=6 format=3 uid="uid://cqaum5a741512"]
 
 [ext_resource type="Texture2D" uid="uid://wijmpjh7emrx" path="res://assets/UI/Icons/circle_control.png" id="1_wtkjn"]
 [ext_resource type="Script" uid="uid://0a1gtlao6jp3" path="res://scripts/control_player.gd" id="2_i2ph0"]
 [ext_resource type="Texture2D" uid="uid://ch7utj8n7xahx" path="res://assets/UI/Icons/circle_control_button.png" id="3_3lknu"]
+[ext_resource type="Script" uid="uid://b4jw3hfrt70tb" path="res://scripts/control_shot.gd" id="4_3lknu"]
+[ext_resource type="Texture2D" uid="uid://32n48cq5b4px" path="res://assets/player/bullets/bullet-point.png" id="5_8dc4r"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,16 +14,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Base" type="TextureRect" parent="." node_paths=PackedStringArray("stick")]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.003
+anchor_bottom = 1.002
+offset_right = 0.23999
+offset_bottom = -0.160156
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Joystick" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Base" type="TextureRect" parent="MarginContainer/Joystick" node_paths=PackedStringArray("stick")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.72
 anchor_right = 0.158
 anchor_bottom = 1.0
 offset_left = 3.0
-offset_top = 0.399963
+offset_top = -1.04004
 offset_right = -0.360016
-offset_bottom = -2.0
+offset_bottom = -3.43994
 grow_vertical = 0
 texture = ExtResource("1_wtkjn")
 expand_mode = 1
@@ -30,17 +46,51 @@ script = ExtResource("2_i2ph0")
 radius = 150.0
 stick = NodePath("Stick")
 
-[node name="Stick" type="TextureRect" parent="Base"]
+[node name="Stick" type="TextureRect" parent="MarginContainer/Joystick/Base"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 102.5
-offset_top = 102.5
-offset_right = -102.5
-offset_bottom = -102.5
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.284
+anchor_top = 0.286
+anchor_right = 0.716
+anchor_bottom = 0.704
+offset_left = -0.123077
+offset_top = 0.042244
+offset_right = -0.0849457
+offset_bottom = -0.0806885
 texture = ExtResource("3_3lknu")
 expand_mode = 1
 stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="BaseShot" type="TextureRect" parent="MarginContainer/Joystick" node_paths=PackedStringArray("stick")]
+modulate = Color(0, 0.721569, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.722
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.904053
+offset_top = 0.455933
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_wtkjn")
+expand_mode = 1
+script = ExtResource("4_3lknu")
+stick = NodePath("StickShot")
+
+[node name="StickShot" type="TextureRect" parent="MarginContainer/Joystick/BaseShot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.221
+anchor_top = 0.221
+anchor_right = 0.779
+anchor_bottom = 0.779
+offset_left = -0.0320053
+offset_top = -0.0320053
+offset_right = 0.0319824
+offset_bottom = 0.0319824
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8dc4r")
+expand_mode = 1

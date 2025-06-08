@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://buwqpngp8rmqi"]
+
+[ext_resource type="Texture2D" uid="uid://u5s4ttq8ju4n" path="res://assets/player/arrow_idle.png" id="1_nl48y"]
+
+[node name="PSprite" type="Sprite2D"]
+scale = Vector2(0.274414, 0.274414)
+texture = ExtResource("1_nl48y")

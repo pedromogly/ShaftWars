@@ -9,7 +9,7 @@ var damage:int = player.damage_base
 func _ready():
 	collision.area_entered.connect(collision_now)
 	
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	queue_free()
 
 func _process(delta):

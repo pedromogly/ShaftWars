@@ -20,7 +20,7 @@ var sprite_player_instance = preload("res://prefabs/player_sprite.tscn")
 
 var bullet_preload = preload("res://prefabs/bullet.tscn")
 
-var shot_cooldown:float = 0.2
+var shot_cooldown:float = 0.3
 var can_shot:bool = true
 
 func _ready():
@@ -29,6 +29,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	fly_movement(delta)
 	fly_rotate()
+	
 
 func fly_movement(delta):
 	var velocity_base = player.velocity_base
@@ -47,7 +48,6 @@ func fly_movement(delta):
 
 func fly_rotate():
 	#var mouse_position = get_global_mouse_position()
-	print(baseShot.dir_length.length())
 	if baseShot.dir_length.length() > 40.0:
 		body_base.rotation = baseShot.dir_length.angle()
 
@@ -59,7 +59,6 @@ func fly_rotate():
 		can_shot = true
 
 func shot():
-	
 	var bullet_instance = bullet_preload.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
 	

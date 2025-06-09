@@ -32,6 +32,13 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://djdrmi2li63s"
 
+[global_group]
+
+enemy=""
+player=""
+hurtbox_player=""
+hurtbox_enemy=""
+
 [input]
 
 left={

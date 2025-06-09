@@ -11,8 +11,9 @@ radius = 29.0172
 _data = [Vector2(0.0454545, 0.0898877), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[node name="Bullet" type="Node2D"]
+[node name="Bullet" type="Node2D" node_paths=PackedStringArray("collision")]
 script = ExtResource("1_7rc6x")
+collision = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="."]
 

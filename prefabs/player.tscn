@@ -4,15 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://buwqpngp8rmqi" path="res://prefabs/player_sprite.tscn" id="2_r66lb"]
 [ext_resource type="PackedScene" uid="uid://cqaum5a741512" path="res://prefabs/joystick.tscn" id="3_ht1c8"]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("body_base", "joystick")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("body_base", "joystick") groups=["player"]]
 script = ExtResource("1_r66lb")
 body_base = NodePath("Base")
 joystick = NodePath("UI/joystick")
 
-[node name="Area" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." groups=["hurtbox_player"]]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area"]
-visible = false
+[node name="CHurtBox" type="CollisionPolygon2D" parent="HurtBox"]
 polygon = PackedVector2Array(-47, -73, 57, 1, -46, 73, -57, 57, -34, 0, -57, -60)
 
 [node name="Base" type="Node2D" parent="."]

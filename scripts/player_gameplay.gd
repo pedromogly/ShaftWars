@@ -19,9 +19,11 @@ var sprite_player_instance = preload("res://prefabs/player_sprite.tscn")
 
 
 var bullet_preload = preload("res://prefabs/bullet.tscn")
-
 var shot_cooldown:float = 0.3
 var can_shot:bool = true
+
+var max_hp:int = player.max_health
+var hp:int = max_hp
 
 func _ready():
 	pass
@@ -64,3 +66,25 @@ func shot():
 	
 	bullet_instance.global_position = global_position
 	bullet_instance.set_direction_bullet(baseShot.direction)
+
+func take_damage(damage):
+	hp -= damage
+	shake_damage()
+	print("AI MEU OVO: ",hp)
+	System.display_damage(self,damage,global_position)
+
+func is_live():
+	if hp <= 0:
+		print("YOU DIE OH NO")
+
+func shake_damage():
+	var sprite_initial_pos = sprite.position
+	var tween_pos = get_tree().create_tween()
+	var tween_mod = get_tree().create_tween()
+	tween_mod.tween_property(sprite,"modulate",Color(0.0,1.0,1.0,1.0),0.2)
+	tween_mod.tween_property(sprite,"modulate",Color(1.0,1.0,1.0,1.0),0.2)
+	
+	tween_pos.tween_property(sprite,"position",Vector2(0,15),0.05)
+	tween_pos.tween_property(sprite,"position",Vector2(15,15),0.05)
+	tween_pos.tween_property(sprite,"position",Vector2(15,0),0.05)
+	tween_pos.tween_property(sprite,"position",sprite_initial_pos,0.05)

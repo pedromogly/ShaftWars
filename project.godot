@@ -20,7 +20,9 @@ boot_splash/minimum_display_time=500
 
 [autoload]
 
-player="*res://scripts/Singletons/Player.gd"
+player="*res://scripts/Singletons/PlayerBase.gd"
+System="*res://scripts/Singletons/SystemGameplay.gd"
+Bullet="*res://scripts/Singletons/BulletSkills.gd"
 
 [display]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgv8lbi5egimq"]
+[gd_scene load_steps=6 format=3 uid="uid://bgv8lbi5egimq"]
 
 [ext_resource type="Shader" uid="uid://dwiywggyq0ufo" path="res://Shaders/stars.gdshader" id="1_4alcr"]
 [ext_resource type="PackedScene" uid="uid://d4gatmcqu08kd" path="res://prefabs/player.tscn" id="2_k5wp1"]
 [ext_resource type="PackedScene" uid="uid://7tu2mfs1pe6i" path="res://prefabs/we_neon_night.tscn" id="3_h83cp"]
+[ext_resource type="Script" uid="uid://6o8vi0qq2rec" path="res://scripts/spawn_narrow.gd" id="4_g4yit"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5wp1"]
 shader = ExtResource("1_4alcr")
@@ -38,3 +39,7 @@ offset_bottom = 1177.0
 position = Vector2(905, 827)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_h83cp")]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(549, -148)
+script = ExtResource("4_g4yit")

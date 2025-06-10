@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7bbsteuhxyo"]
+
+[ext_resource type="FontFile" uid="uid://rh1tv8pjkmm6" path="res://assets/UI/Font/Kenney Future Narrow.ttf" id="1_uqni1"]
+
+[node name="DisplayDamage" type="Label"]
+z_index = 1
+anchors_preset = -1
+anchor_right = 0.059
+anchor_bottom = 0.049
+offset_right = -73.28
+offset_bottom = -29.92
+theme_override_colors/font_color = Color(0.923768, 0.923768, 0.923768, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.63836, 0.419503, 1)
+theme_override_fonts/font = ExtResource("1_uqni1")
+theme_override_font_sizes/font_size = 52
+text = "000"

@@ -1,26 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl3poxn6pdosb"]
+[gd_scene load_steps=3 format=3 uid="uid://dl3poxn6pdosb"]
 
-[ext_resource type="Script" uid="uid://dk50cclgijtbe" path="res://scripts/narrow_enemy.gd" id="1_gep6m"]
-[ext_resource type="Texture2D" uid="uid://6fb24s4lgfer" path="res://assets/enemies/circle.png" id="2_ainam"]
+[ext_resource type="PackedScene" uid="uid://bl8euypsyaf1i" path="res://prefabs/enemys/narrow.tscn" id="1_gep6m"]
 [ext_resource type="PackedScene" uid="uid://d4gatmcqu08kd" path="res://prefabs/player.tscn" id="3_ainam"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mo2s0"]
-radius = 66.0681
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Narrow" type="Node2D" parent="." node_paths=PackedStringArray("hurtbox") groups=["enemy"]]
-script = ExtResource("1_gep6m")
-hurtbox = NodePath("HurtBox")
-
-[node name="HurtBox" type="Area2D" parent="Narrow" groups=["hurtbox_enemy"]]
-
-[node name="CHurtBox" type="CollisionShape2D" parent="Narrow/HurtBox"]
-shape = SubResource("CircleShape2D_mo2s0")
-
-[node name="Sprite2D" type="Sprite2D" parent="Narrow"]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_ainam")
+[node name="Narrow" parent="." instance=ExtResource("1_gep6m")]
 
 [node name="Player" parent="." instance=ExtResource("3_ainam")]
 position = Vector2(852, 672)

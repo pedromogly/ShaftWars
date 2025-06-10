@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://buwqpngp8rmqi" path="res://prefabs/player_sprite.tscn" id="2_r66lb"]
 [ext_resource type="PackedScene" uid="uid://cqaum5a741512" path="res://prefabs/joystick.tscn" id="3_ht1c8"]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("body_base", "joystick") groups=["player"]]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "body_base", "joystick") groups=["player"]]
 script = ExtResource("1_r66lb")
+sprite = NodePath("Base/PSprite")
 body_base = NodePath("Base")
 joystick = NodePath("UI/joystick")
 

@@ -4,19 +4,17 @@ extends Node2D
 @export var hurtbox:Area2D
 @export var speed:float = 300.0
 
-@export var damage:int = 35
+@export var damage:int = 14
 
 @export var max_hp:int = 65
 var hp:int = max_hp
 
-signal enemy_die
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hurtbox.area_entered.connect(hurtbox_c)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	is_live()
 	
 	var ptarget = get_tree().get_first_node_in_group("player")
 	if ptarget:
@@ -33,16 +31,16 @@ func hurtbox_c(body):
 		
 		queue_free()
 
-func take_damage(damage:int):
-	hp -= damage
+func take_damage(dmg:int):
+	hp -= dmg
 	hurtReaction()
-	System.display_damage(self,damage,global_position)
-
-func is_live():
+	#System.display_damage(self,dmg,global_position)
+	EventBus.display_text_request.emit(self,dmg,global_position)
+		
 	if hp <= 0:
 		print("NICE KILL!")
+		EventBus.enemy_die.emit()
 		queue_free()
-		enemy_die.emit()
 
 func hurtReaction():
 	var myModulate = modulate

@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @export var sprite:Sprite2D
 @export var body_base:Node2D
@@ -46,7 +46,10 @@ func fly_movement(delta):
 		velocity_base = 0
 	
 	movement_speed = clamp(movement_speed,0,max_speed)
-	position += last_direction * (movement_speed + velocity_base) * delta
+	var final_velocity = last_direction * (movement_speed + velocity_base)
+	#position += last_direction * (movement_speed + velocity_base) * delta
+	velocity = final_velocity
+	move_and_slide()
 
 func fly_rotate():
 	#var mouse_position = get_global_mouse_position()
@@ -67,11 +70,12 @@ func shot():
 	bullet_instance.global_position = global_position
 	bullet_instance.set_direction_bullet(baseShot.direction)
 
-func take_damage(damage):
-	hp -= damage
+func take_damage(dmg:int):
+	hp -= dmg
 	shake_damage()
 	print("AI MEU OVO: ",hp)
-	System.display_damage(self,damage,global_position)
+	#System.display_damage(self,dmg,global_position)
+	EventBus.display_text_request.emit(self,dmg,global_position)
 
 func is_live():
 	if hp <= 0:

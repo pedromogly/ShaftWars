@@ -4,16 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://buwqpngp8rmqi" path="res://prefabs/player_sprite.tscn" id="2_r66lb"]
 [ext_resource type="PackedScene" uid="uid://cqaum5a741512" path="res://prefabs/joystick.tscn" id="3_ht1c8"]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "body_base", "joystick") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "body_base", "joystick") groups=["player"]]
+collision_mask = 2
+motion_mode = 1
 script = ExtResource("1_r66lb")
 sprite = NodePath("Base/PSprite")
 body_base = NodePath("Base")
 joystick = NodePath("UI/joystick")
 
+[node name="CollisionBox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-47, -73, 57, 1, -46, 73, -57, 57, -34, 0, -57, -60)
+
 [node name="HurtBox" type="Area2D" parent="." groups=["hurtbox_player"]]
+collision_mask = 2
 
 [node name="CHurtBox" type="CollisionPolygon2D" parent="HurtBox"]
-polygon = PackedVector2Array(-47, -73, 57, 1, -46, 73, -57, 57, -34, 0, -57, -60)
+polygon = PackedVector2Array(-45, -77, 69, 1, -45, 77, -60, 59, -36, -1, -59, -61)
 
 [node name="Base" type="Node2D" parent="."]
 

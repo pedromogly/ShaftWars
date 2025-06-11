@@ -23,13 +23,15 @@ boot_splash/minimum_display_time=500
 player="*res://scripts/Singletons/PlayerBase.gd"
 System="*res://scripts/Singletons/SystemGameplay.gd"
 Bullet="*res://scripts/Singletons/BulletSkills.gd"
+EventBus="*res://scripts/Singletons/EventBusScript.gd"
+SceneBus="*res://scripts/Singletons/sceneBus.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=1100
-window/size/window_height_override=650
+window/size/window_width_override=800
+window/size/window_height_override=400
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://djdrmi2li63s"
@@ -67,6 +69,11 @@ down={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_render/layer_2="player"
+2d_render/layer_5="wall_limit"
 
 [rendering]
 

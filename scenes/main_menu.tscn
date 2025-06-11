@@ -107,6 +107,7 @@ theme_override_font_sizes/font_size = 42
 text = "NEW GAME"
 
 [node name="Button2" type="Button" parent="Background/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_l6cm7")
 theme_override_font_sizes/font_size = 42
@@ -133,6 +134,7 @@ autoplay = "menu_shafts_1"
 
 [node name="fade_in" type="ColorRect" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

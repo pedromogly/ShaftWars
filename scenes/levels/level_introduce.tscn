@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgv8lbi5egimq"]
+[gd_scene load_steps=9 format=3 uid="uid://bgv8lbi5egimq"]
 
+[ext_resource type="Script" uid="uid://h6pc0g74lqw" path="res://scripts/levels/level_introduce.gd" id="1_3abu4"]
 [ext_resource type="Shader" uid="uid://dwiywggyq0ufo" path="res://Shaders/stars.gdshader" id="1_4alcr"]
 [ext_resource type="PackedScene" uid="uid://d4gatmcqu08kd" path="res://prefabs/player.tscn" id="2_k5wp1"]
 [ext_resource type="PackedScene" uid="uid://7tu2mfs1pe6i" path="res://prefabs/we_neon_night.tscn" id="3_h83cp"]
@@ -16,6 +17,11 @@ shader_parameter/smallStarAmount = 0.002
 shader_parameter/mediumStarAmount = 0.01
 shader_parameter/bigStarAmount = 0.02
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3abu4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3abu4"]
+size = Vector2(1932, 20)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -23,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3abu4")
 
 [node name="SpaceBG" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_k5wp1")
@@ -40,6 +47,110 @@ position = Vector2(905, 827)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_h83cp")]
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(549, -148)
+[node name="Spawn" type="Node2D" parent="."]
 script = ExtResource("4_g4yit")
+max_sec_random = 2.0
+min_sec_random = 0.5
+
+[node name="Marker2D" type="Marker2D" parent="Spawn"]
+position = Vector2(549, -148)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawn"]
+position = Vector2(968, -227)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawn"]
+position = Vector2(209, -144)
+
+[node name="Marker2D4" type="Marker2D" parent="Spawn"]
+position = Vector2(-157, 91)
+
+[node name="Marker2D5" type="Marker2D" parent="Spawn"]
+position = Vector2(-254, 298)
+
+[node name="Marker2D6" type="Marker2D" parent="Spawn"]
+position = Vector2(-182, 536)
+
+[node name="Marker2D7" type="Marker2D" parent="Spawn"]
+position = Vector2(-282, 795)
+
+[node name="Marker2D8" type="Marker2D" parent="Spawn"]
+position = Vector2(-189, 1144)
+
+[node name="Marker2D9" type="Marker2D" parent="Spawn"]
+position = Vector2(94, 1317)
+
+[node name="Marker2D10" type="Marker2D" parent="Spawn"]
+position = Vector2(425, 1258)
+
+[node name="Marker2D11" type="Marker2D" parent="Spawn"]
+position = Vector2(863, 1337)
+
+[node name="Marker2D12" type="Marker2D" parent="Spawn"]
+position = Vector2(1263, 1265)
+
+[node name="Marker2D13" type="Marker2D" parent="Spawn"]
+position = Vector2(1940, 1296)
+
+[node name="Marker2D14" type="Marker2D" parent="Spawn"]
+position = Vector2(2233, 868)
+
+[node name="Marker2D15" type="Marker2D" parent="Spawn"]
+position = Vector2(2116, 578)
+
+[node name="Marker2D16" type="Marker2D" parent="Spawn"]
+position = Vector2(2178, 212)
+
+[node name="Marker2D17" type="Marker2D" parent="Spawn"]
+position = Vector2(2092, 60)
+
+[node name="Marker2D18" type="Marker2D" parent="Spawn"]
+position = Vector2(1909, -192)
+
+[node name="Marker2D19" type="Marker2D" parent="Spawn"]
+position = Vector2(1526, -327)
+
+[node name="Marker2D20" type="Marker2D" parent="Spawn"]
+position = Vector2(1253, -386)
+
+[node name="Marker2D21" type="Marker2D" parent="Spawn"]
+position = Vector2(1253, -386)
+
+[node name="Wall1" type="StaticBody2D" parent="."]
+position = Vector2(0, 15)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_3abu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1"]
+position = Vector2(956, 0)
+shape = SubResource("RectangleShape2D_3abu4")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(0, 1085)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_3abu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(956, 0)
+shape = SubResource("RectangleShape2D_3abu4")
+
+[node name="Wall3" type="StaticBody2D" parent="."]
+position = Vector2(0, 1085)
+rotation = -1.57122
+scale = Vector2(0.559834, 1)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_3abu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
+position = Vector2(956, 0)
+shape = SubResource("RectangleShape2D_3abu4")
+
+[node name="Wall4" type="StaticBody2D" parent="."]
+position = Vector2(1916, 1084)
+rotation = -1.57122
+scale = Vector2(0.559834, 1)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_3abu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
+position = Vector2(956, 0)
+shape = SubResource("RectangleShape2D_3abu4")

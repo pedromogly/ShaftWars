@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var sprite:Sprite2D
+@export var dieExplosion:CPUParticles2D
 @export var body_base:Node2D
 
 @export var joystick:Control
@@ -26,8 +27,8 @@ var max_hp:int = player.max_health
 var hp:int = max_hp
 
 func _ready():
-	pass
-	
+	EventBus.send_hp.emit(hp,max_hp)
+
 func _physics_process(delta: float) -> void:
 	fly_movement(delta)
 	fly_rotate()
@@ -76,10 +77,14 @@ func take_damage(dmg:int):
 	print("AI MEU OVO: ",hp)
 	#System.display_damage(self,dmg,global_position)
 	EventBus.display_text_request.emit(self,dmg,global_position)
+	EventBus.send_hp.emit(hp,max_hp)
+	is_live()
 
 func is_live():
 	if hp <= 0:
 		print("YOU DIE OH NO")
+		hp = 0
+		die()
 
 func shake_damage():
 	var sprite_initial_pos = sprite.position
@@ -92,3 +97,10 @@ func shake_damage():
 	tween_pos.tween_property(sprite,"position",Vector2(15,15),0.05)
 	tween_pos.tween_property(sprite,"position",Vector2(15,0),0.05)
 	tween_pos.tween_property(sprite,"position",sprite_initial_pos,0.05)
+	
+
+func die():
+	sprite.visible = false
+	dieExplosion.emitting = true
+	joystick.visible = false
+	EventBus.player_die.emit()

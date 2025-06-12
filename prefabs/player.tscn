@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4gatmcqu08kd"]
+[gd_scene load_steps=6 format=3 uid="uid://d4gatmcqu08kd"]
 
 [ext_resource type="Script" uid="uid://b486s7fbw42ps" path="res://scripts/player_gameplay.gd" id="1_r66lb"]
 [ext_resource type="PackedScene" uid="uid://buwqpngp8rmqi" path="res://prefabs/player_sprite.tscn" id="2_r66lb"]
+[ext_resource type="Texture2D" uid="uid://bl5ovsuaieib1" path="res://assets/player/arrow_run.png" id="3_g2jcq"]
 [ext_resource type="PackedScene" uid="uid://cqaum5a741512" path="res://prefabs/joystick.tscn" id="3_ht1c8"]
+[ext_resource type="PackedScene" uid="uid://cuc5mb3epy8jo" path="res://prefabs/controls/player_status.tscn" id="4_1txc5"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "body_base", "joystick") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "dieExplosion", "body_base", "joystick") groups=["player"]]
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_r66lb")
 sprite = NodePath("Base/PSprite")
+dieExplosion = NodePath("Base/DieExplosion")
 body_base = NodePath("Base")
 joystick = NodePath("UI/joystick")
 
@@ -25,6 +28,27 @@ polygon = PackedVector2Array(-45, -77, 69, 1, -45, 77, -60, 59, -36, -1, -59, -6
 
 [node name="PSprite" parent="Base" instance=ExtResource("2_r66lb")]
 
+[node name="DieExplosion" type="CPUParticles2D" parent="Base"]
+emitting = false
+amount = 16
+texture = ExtResource("3_g2jcq")
+one_shot = true
+speed_scale = 2.62
+explosiveness = 0.55
+randomness = 0.29
+local_coords = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+angle_min = -219.0
+angle_max = 18.2
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color = Color(0.710254, 0.710254, 0.710254, 1)
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="joystick" parent="UI" instance=ExtResource("3_ht1c8")]
+
+[node name="PlayerStatus" parent="UI" instance=ExtResource("4_1txc5")]

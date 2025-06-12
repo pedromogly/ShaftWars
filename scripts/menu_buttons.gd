@@ -10,7 +10,7 @@ func _ready():
 	bt_quit.connect("button_up",quit_pressed)
 
 func _newgame_pressed():
-	SceneBus.goto_scene("res://scenes/levels/level_introduce.tscn")
+	EventBus.fade_out_animation(func(): SceneBus.goto_scene("res://scenes/levels/level_introduce.tscn"))
 
 func quit_pressed():
 	get_tree().quit()

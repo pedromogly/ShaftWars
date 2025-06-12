@@ -9,20 +9,24 @@ extends Node2D
 @export var max_hp:int = 65
 var hp:int = max_hp
 
-# Called when the node enters the scene tree for the first time.
+var target_is_live:bool = true
+
 func _ready() -> void:
 	hurtbox.area_entered.connect(hurtbox_c)
+	EventBus.player_die.connect(player_die)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	if target_is_live:
+		enemy_move(delta)
+
+func enemy_move(delta):
 	var ptarget = get_tree().get_first_node_in_group("player")
 	if ptarget:
 		var direction = ptarget.global_position - global_position
 		var relative = direction.normalized()
 		
 		position += relative * speed * delta
-	
+
 func hurtbox_c(body):
 	print(body)
 	if body.is_in_group("hurtbox_player"):
@@ -47,4 +51,6 @@ func hurtReaction():
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite,"modulate",Color.CYAN,0.2)
 	tween.tween_property(sprite,"modulate",myModulate,0.2)
-	
+
+func player_die():
+	target_is_live = false

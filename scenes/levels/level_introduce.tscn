@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgv8lbi5egimq"]
+[gd_scene load_steps=10 format=3 uid="uid://bgv8lbi5egimq"]
 
 [ext_resource type="Script" uid="uid://h6pc0g74lqw" path="res://scripts/levels/level_introduce.gd" id="1_3abu4"]
 [ext_resource type="Shader" uid="uid://dwiywggyq0ufo" path="res://Shaders/stars.gdshader" id="1_4alcr"]
 [ext_resource type="PackedScene" uid="uid://d4gatmcqu08kd" path="res://prefabs/player.tscn" id="2_k5wp1"]
 [ext_resource type="PackedScene" uid="uid://7tu2mfs1pe6i" path="res://prefabs/we_neon_night.tscn" id="3_h83cp"]
 [ext_resource type="Script" uid="uid://6o8vi0qq2rec" path="res://scripts/spawn_narrow.gd" id="4_g4yit"]
+[ext_resource type="FontFile" uid="uid://rh1tv8pjkmm6" path="res://assets/UI/Font/Kenney Future Narrow.ttf" id="6_7oywm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5wp1"]
 shader = ExtResource("1_4alcr")
@@ -22,7 +23,7 @@ shader_parameter/bigStarAmount = 0.02
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3abu4"]
 size = Vector2(1932, 20)
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" node_paths=PackedStringArray("timer", "timeSurvive")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +31,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3abu4")
+timer = NodePath("Record")
+timeSurvive = NodePath("TimeSurvive")
 
 [node name="SpaceBG" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_k5wp1")
@@ -43,7 +46,7 @@ offset_right = 1470.6
 offset_bottom = 1177.0
 
 [node name="Player" parent="." instance=ExtResource("2_k5wp1")]
-position = Vector2(905, 827)
+position = Vector2(904, 820)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_h83cp")]
 
@@ -117,6 +120,7 @@ position = Vector2(1253, -386)
 
 [node name="Wall1" type="StaticBody2D" parent="."]
 position = Vector2(0, 15)
+scale = Vector2(1.12, 1)
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_3abu4")
 
@@ -126,6 +130,7 @@ shape = SubResource("RectangleShape2D_3abu4")
 
 [node name="Wall2" type="StaticBody2D" parent="."]
 position = Vector2(0, 1085)
+scale = Vector2(1.08, 1)
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_3abu4")
 
@@ -145,7 +150,7 @@ position = Vector2(956, 0)
 shape = SubResource("RectangleShape2D_3abu4")
 
 [node name="Wall4" type="StaticBody2D" parent="."]
-position = Vector2(1916, 1084)
+position = Vector2(2032, 1084)
 rotation = -1.57122
 scale = Vector2(0.559834, 1)
 collision_layer = 2
@@ -154,3 +159,22 @@ physics_material_override = SubResource("PhysicsMaterial_3abu4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
 position = Vector2(956, 0)
 shape = SubResource("RectangleShape2D_3abu4")
+
+[node name="Record" type="Timer" parent="."]
+
+[node name="TimeSurvive" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.842
+anchor_right = 1.0
+anchor_bottom = 0.103
+offset_left = 13.3599
+offset_top = 23.0
+offset_right = -18.0
+offset_bottom = -3.24001
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_7oywm")
+theme_override_font_sizes/font_size = 20
+text = "Time Survive: 00:00"
+horizontal_alignment = 1
+vertical_alignment = 1

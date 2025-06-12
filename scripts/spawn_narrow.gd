@@ -12,9 +12,11 @@ var can_spawn:bool = true
 
 func _ready() -> void:
 	EventBus.enemy_die.connect(enemy_die_count)
-	get_markers()
-	spawn()
+	EventBus.player_die.connect(stop_spawn)
 	
+	get_markers()
+	await get_tree().create_timer(2.0).timeout
+	spawn()
 
 func spawn():
 	while can_spawn:
@@ -24,6 +26,8 @@ func spawn():
 		var time_spawn = randf_range(min_sec_random,max_sec_random)
 		var who_mark = randi() % marksSpawner.size()
 		await get_tree().create_timer(time_spawn).timeout
+		if not can_spawn:
+			return
 		var spawnPoint = marksSpawner[who_mark]
 		#if not is_instance_valid(spawnPoint):
 		#	return
@@ -36,9 +40,9 @@ func spawn():
 
 func stop_spawn():
 	can_spawn = false
-	if mob_count < 28:
-		can_spawn = true
-		
+	for mark in marksSpawner:
+		mark.visible = false
+
 func enemy_die_count():
 	mob_count -= 1
 

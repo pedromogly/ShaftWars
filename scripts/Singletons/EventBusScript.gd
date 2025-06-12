@@ -10,11 +10,14 @@ signal player_die
 
 
 func fade_in_animation():
+	var fade_layer = CanvasLayer.new()
+	var fade_in_img = ColorRect.new()
+	
 	if not is_instance_valid(get_tree().current_scene):
 		await get_tree().process_frame
-
-	var fade_in_img = ColorRect.new()
-	get_tree().current_scene.add_child(fade_in_img)
+	fade_layer.add_child(fade_in_img)
+	get_tree().root.add_child(fade_layer)
+	
 	fade_in_img.color = Color.BLACK
 	fade_in_img.modulate.a = 1.0
 	fade_in_img.size = Vector2(3000,2000)

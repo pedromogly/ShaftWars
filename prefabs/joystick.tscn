@@ -21,10 +21,10 @@ anchor_right = 1.003
 anchor_bottom = 1.002
 offset_right = 0.23999
 offset_bottom = -0.160156
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="Joystick" type="Control" parent="MarginContainer"]
 layout_mode = 2

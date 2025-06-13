@@ -8,14 +8,19 @@ var offset:Vector2 = Vector2(40,0)
 @export var timeSurvive:Label
 var seconds:int
 
+@export var score:Label
+var scoreAmount:int = 0
+
 func _ready():
 	timer.timeout.connect(set_time)
 	EventBus.display_text_request.connect(display_text_damage)
 	EventBus.player_die.connect(stop_timer)
+	EventBus.enemy_die.connect(take_score)
 	init_game_animation()
 
 func _process(delta: float) -> void:
 	timeSurvive.text = "TIME SURVIVE: "+str(seconds)
+	score.text = str(scoreAmount)
 
 func init_game_animation():
 	EventBus.fade_in_animation()
@@ -56,3 +61,7 @@ func set_time():
 
 func stop_timer():
 	timer.stop()
+
+func take_score(who:Node2D):
+	if who.is_in_group("narrow"):
+		scoreAmount += 3

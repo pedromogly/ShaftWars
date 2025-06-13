@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_mo2s0"]
 radius = 66.0681
 
-[node name="Narrow" type="Node2D" node_paths=PackedStringArray("sprite", "hurtbox") groups=["enemy"]]
+[node name="Narrow" type="Node2D" node_paths=PackedStringArray("sprite", "hurtbox") groups=["enemy", "narrow"]]
 script = ExtResource("1_ppcih")
 sprite = NodePath("Sprite2D")
 hurtbox = NodePath("HurtBox")

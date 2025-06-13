@@ -3,20 +3,19 @@ extends Control
 @export var base: TextureRect
 @export var stick: TextureRect  # Adicione essa referência
 @export var limitBase: Control
+
 var positionBase: Vector2
 
 var touch_id := -1
 var radius: float = 150.0  # Mesmo raio do stick
 var direction := Vector2.ZERO
+var directionShot := Vector2.ZERO
 
 func _ready() -> void:
-	positionBase = base.position
-	print(positionBase)
-	reset_position_local()
-	
+	positionBase = Vector2(0,671)
+
 func reset_position_local():
 	base.position = positionBase
-	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
@@ -24,10 +23,9 @@ func _input(event: InputEvent) -> void:
 			if limitBase.get_global_rect().has_point(event.position):
 				# Primeiro toque: posiciona a base
 				touch_id = event.index
-				var local_pos = get_global_transform().affine_inverse() * event.position
+				var local_pos = get_global_transform().inverse() * event.position
 				base.position = local_pos - base.size / 2
 			else:
-				# Toque fora do limite: reseta a base
 				reset_position_local()
 				direction = Vector2.ZERO
 				stick.position = (base.size / 2) - (stick.size / 2)
@@ -36,6 +34,7 @@ func _input(event: InputEvent) -> void:
 			touch_id = -1
 			reset_position_local()
 			direction = Vector2.ZERO
+			directionShot = Vector2.ZERO
 			stick.position = (base.size / 2) - (stick.size / 2)
 
 	elif event is InputEventScreenDrag and event.index == touch_id:

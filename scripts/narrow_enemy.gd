@@ -33,7 +33,7 @@ func hurtbox_c(body):
 		var ptarget = body.get_parent()
 		ptarget.take_damage(damage)
 		
-		queue_free()
+		enemy_die()
 
 func take_damage(dmg:int):
 	hp -= dmg
@@ -42,9 +42,7 @@ func take_damage(dmg:int):
 	EventBus.display_text_request.emit(self,dmg,global_position)
 		
 	if hp <= 0:
-		print("NICE KILL!")
-		EventBus.enemy_die.emit()
-		queue_free()
+		enemy_die()
 
 func hurtReaction():
 	var myModulate = modulate
@@ -54,3 +52,8 @@ func hurtReaction():
 
 func player_die():
 	target_is_live = false
+
+func enemy_die():
+	print("NICE KILL!")
+	EventBus.enemy_die.emit(self)
+	queue_free()

@@ -41,6 +41,7 @@ enemy=""
 player=""
 hurtbox_player=""
 hurtbox_enemy=""
+narrow=""
 
 [input]
 

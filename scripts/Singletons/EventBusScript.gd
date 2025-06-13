@@ -3,11 +3,9 @@ extends Node
 
 signal display_text_request(who:Node2D,info,global_position:Vector2)
 
-signal enemy_die
+signal enemy_die(who:Node2D)
 signal send_hp(health:int,max_health:int)
-
 signal player_die
-
 
 func fade_in_animation():
 	var fade_layer = CanvasLayer.new()

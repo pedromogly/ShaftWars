@@ -4,7 +4,8 @@ extends Node2D
 var speed:float = 1800.0
 var direction = Vector2.ZERO
 
-var damage:int = player.damage_base
+var min_damage:int = player.damage_base
+var max_damage:int = player.max_damage
 
 func _ready():
 	collision.area_entered.connect(collision_now)
@@ -23,6 +24,7 @@ func set_direction_bullet(new_direction:Vector2):
 func collision_now(body_area):
 	if body_area.is_in_group("hurtbox_enemy"):
 		var body = body_area.get_parent()
+		var damage = randi_range(min_damage,max_damage)
 		if body:
 			body.take_damage(damage)
 			

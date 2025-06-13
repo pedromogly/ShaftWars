@@ -31,8 +31,6 @@ func spawn():
 		var spawnPoint = marksSpawner[who_mark]
 		#if not is_instance_valid(spawnPoint):
 		#	return
-		if mob_count > 28:
-			return
 		var enemy = enemy_scene.instantiate()
 		get_tree().current_scene.add_child(enemy)
 		enemy.global_position = spawnPoint.global_position

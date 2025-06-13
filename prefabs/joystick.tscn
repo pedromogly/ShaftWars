@@ -63,10 +63,10 @@ anchor_left = -0.001
 anchor_top = 0.663
 anchor_right = 0.191
 anchor_bottom = 1.006
-offset_left = 0.826
-offset_top = 3.44696
-offset_right = 0.233978
-offset_bottom = -0.186035
+offset_left = 1.826
+offset_top = -12.553
+offset_right = 1.23398
+offset_bottom = -16.186
 grow_vertical = 0
 texture = ExtResource("1_wtkjn")
 expand_mode = 1
@@ -87,7 +87,7 @@ texture = ExtResource("3_3lknu")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="BaseShot" type="TextureRect" parent="MarginContainer/Joystick" node_paths=PackedStringArray("stick")]
+[node name="BaseShot" type="TextureRect" parent="MarginContainer/Joystick" node_paths=PackedStringArray("limitShot", "stick")]
 modulate = Color(0, 0.721569, 1, 0.560784)
 layout_mode = 1
 anchors_preset = -1
@@ -96,15 +96,16 @@ anchor_top = 0.663
 anchor_right = 1.002
 anchor_bottom = 1.003
 offset_left = -0.0600586
-offset_top = 0.44696
+offset_top = -12.553
 offset_right = -0.652222
-offset_bottom = -0.0930176
+offset_bottom = -13.093
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("1_wtkjn")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("4_3lknu")
+limitShot = NodePath("../LimitShot")
 stick = NodePath("StickShot")
 
 [node name="StickShot" type="TextureRect" parent="MarginContainer/Joystick/BaseShot"]

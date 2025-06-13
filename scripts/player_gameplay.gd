@@ -15,7 +15,7 @@ var last_direction:= Vector2.ZERO
 
 var sprite_player_instance = preload("res://prefabs/player_sprite.tscn")
 
-@onready var base = joystick.find_child("Base")
+@onready var base = joystick.find_child("Joystick")
 @onready var baseShot = joystick.find_child("BaseShot")
 
 
@@ -103,4 +103,5 @@ func die():
 	sprite.visible = false
 	dieExplosion.emitting = true
 	joystick.visible = false
+	joystick.process_mode = Node.PROCESS_MODE_DISABLED
 	EventBus.player_die.emit()

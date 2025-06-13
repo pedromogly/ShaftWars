@@ -10,7 +10,7 @@ var radius: float = 150.0  # Mesmo raio do stick
 var direction := Vector2.ZERO
 
 func _ready() -> void:
-	positionBase = base.get_screen_position()
+	positionBase = base.position
 	print(positionBase)
 	reset_position_local()
 	

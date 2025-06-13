@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqaum5a741512"]
 
 [ext_resource type="Texture2D" uid="uid://wijmpjh7emrx" path="res://assets/UI/Icons/circle_control.png" id="1_wtkjn"]
-[ext_resource type="Script" uid="uid://0a1gtlao6jp3" path="res://scripts/control_player.gd" id="2_i2ph0"]
 [ext_resource type="Texture2D" uid="uid://ch7utj8n7xahx" path="res://assets/UI/Icons/circle_control_button.png" id="3_3lknu"]
 [ext_resource type="Script" uid="uid://b4jw3hfrt70tb" path="res://scripts/control_shot.gd" id="4_3lknu"]
 [ext_resource type="Texture2D" uid="uid://32n48cq5b4px" path="res://assets/player/bullets/bullet-point.png" id="5_8dc4r"]
+[ext_resource type="Script" uid="uid://bbt2tjpki4cm3" path="res://prefabs/limit_base.gd" id="6_8dc4r"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,52 +26,79 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Joystick" type="Control" parent="MarginContainer"]
+[node name="Joystick" type="Control" parent="MarginContainer" node_paths=PackedStringArray("base", "stick", "limitBase")]
 layout_mode = 2
+script = ExtResource("6_8dc4r")
+base = NodePath("Base")
+stick = NodePath("Base/Stick")
+limitBase = NodePath("LimitBase")
 
-[node name="Base" type="TextureRect" parent="MarginContainer/Joystick" node_paths=PackedStringArray("stick")]
+[node name="LimitBase" type="Control" parent="MarginContainer/Joystick"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -718.0
+offset_right = 752.0
+grow_vertical = 0
+
+[node name="LimitShot" type="Control" parent="MarginContainer/Joystick"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -752.0
+offset_top = -718.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Base" type="TextureRect" parent="MarginContainer/Joystick"]
 modulate = Color(1, 1, 1, 0.639216)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.72
-anchor_right = 0.158
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -1.04004
-offset_right = -0.360016
-offset_bottom = -3.43994
+anchor_left = -0.001
+anchor_top = 0.663
+anchor_right = 0.191
+anchor_bottom = 1.006
+offset_left = 0.826
+offset_top = 3.44696
+offset_right = 0.233978
+offset_bottom = -0.186035
 grow_vertical = 0
 texture = ExtResource("1_wtkjn")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("2_i2ph0")
-radius = 150.0
-stick = NodePath("Stick")
 
 [node name="Stick" type="TextureRect" parent="MarginContainer/Joystick/Base"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.046
-offset_left = 82.6538
-offset_top = 83.5199
-offset_right = -82.8618
-offset_bottom = -99.9037
+offset_left = 94.0
+offset_top = 97.0
+offset_right = -96.0
+offset_bottom = -109.1
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_3lknu")
 expand_mode = 1
 stretch_mode = 4
-metadata/_edit_use_anchors_ = true
 
 [node name="BaseShot" type="TextureRect" parent="MarginContainer/Joystick" node_paths=PackedStringArray("stick")]
 modulate = Color(0, 0.721569, 1, 0.560784)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.844
-anchor_top = 0.722
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.904053
-offset_top = 0.455933
+anchor_left = 0.81
+anchor_top = 0.663
+anchor_right = 1.002
+anchor_bottom = 1.003
+offset_left = -0.0600586
+offset_top = 0.44696
+offset_right = -0.652222
+offset_bottom = -0.0930176
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("1_wtkjn")

@@ -24,6 +24,7 @@ player="*res://scripts/Singletons/PlayerBase.gd"
 Bullet="*res://scripts/Singletons/BulletSkills.gd"
 EventBus="*res://scripts/Singletons/EventBusScript.gd"
 SceneBus="*res://scripts/Singletons/sceneBus.gd"
+Loading="*res://scenes/loading.tscn"
 
 [display]
 
@@ -34,6 +35,13 @@ window/size/window_height_override=400
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://djdrmi2li63s"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://scenes/": "orange"
+}
 
 [global_group]
 

@@ -13,4 +13,5 @@ func tween_test():
 	
 	await get_tree().create_timer(4.0).timeout
 	
-	EventBus.fade_out_animation(func(): SceneBus.goto_scene("res://scenes/main_menu.tscn"))
+	#EventBus.fade_out_animation(func(): SceneBus.goto_scene("res://scenes/main_menu.tscn"))
+	Loading.transition_to("res://scenes/main_menu.tscn")

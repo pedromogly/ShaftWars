@@ -21,16 +21,14 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if event.pressed and touch_id == -1:
 			if limitBase.get_global_rect().has_point(event.position):
-				# Primeiro toque: posiciona a base
 				touch_id = event.index
-				var local_pos = get_global_transform().inverse() * event.position
+				var local_pos = event.position
 				base.position = local_pos - base.size / 2
 			else:
 				reset_position_local()
 				direction = Vector2.ZERO
 				stick.position = (base.size / 2) - (stick.size / 2)
 		elif not event.pressed and event.index == touch_id:
-			# Soltou o dedo: reseta o stick
 			touch_id = -1
 			reset_position_local()
 			direction = Vector2.ZERO

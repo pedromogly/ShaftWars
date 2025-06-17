@@ -40,7 +40,9 @@ mouse_cursor/custom_image="uid://djdrmi2li63s"
 
 folder_colors={
 "res://assets/": "red",
-"res://scenes/": "orange"
+"res://prefabs/": "purple",
+"res://scenes/": "orange",
+"res://scripts/": "green"
 }
 
 [global_group]

@@ -10,11 +10,13 @@ var seconds:int
 
 @export var score:Label
 var scoreAmount:int = 0
+var enemyKillCount:int = 0
 
 func _ready():
 	timer.timeout.connect(set_time)
 	EventBus.display_text_request.connect(display_text_damage)
 	EventBus.player_die.connect(stop_timer)
+	EventBus.player_die.connect(game_over)
 	EventBus.enemy_die.connect(take_score)
 	init_game_animation()
 
@@ -23,17 +25,18 @@ func _process(delta: float) -> void:
 	score.text = str(scoreAmount)
 
 func init_game_animation():
-	EventBus.fade_in_animation()
-	
 	await get_tree().create_timer(0.5).timeout
+	display_text_game("GET READY!")
+	timer.autostart = true
+	timer.start(1.0)
+
+func display_text_game(wtext:String):
 	var info_text = info_stage_text.instantiate()
 	add_child(info_text)
 	var text:Label = info_text.find_child("InfoStageLabel")
-	text.text = "GET READY!"
+	text.text = wtext
 	await get_tree().create_timer(3.1).timeout
 	info_text.queue_free()
-	timer.autostart = true
-	timer.start(1.0)
 
 func display_text_damage(who:Node2D,damage:int,gposition:Vector2):
 	var displayText = display.instantiate()
@@ -65,3 +68,13 @@ func stop_timer():
 func take_score(who:Node2D):
 	if who.is_in_group("narrow"):
 		scoreAmount += 3
+	enemyKillCount += 1
+
+func game_over():
+	await display_text_game("MORREU MACACO")
+	var canvaLayer = CanvasLayer.new()
+	get_tree().root.add_child(canvaLayer)
+	var scorer_scene = preload("res://scenes/game_over_stats.tscn").instantiate()
+	canvaLayer.add_child(scorer_scene)
+	scorer_scene.apply_scorer(scoreAmount,enemyKillCount,seconds)
+	scorer_scene.exit_to_menu.connect(func(): canvaLayer.queue_free())

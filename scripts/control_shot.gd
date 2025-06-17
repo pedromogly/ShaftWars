@@ -2,19 +2,35 @@ extends TextureRect
 
 var positionBase:Vector2
 var direction:Vector2 = Vector2.ZERO
-var max_range_stick:float = 100.0
+var max_range_stick:float = 150.0
 var touch_id:int = -1
 
 var dir_length:Vector2 = Vector2.ZERO
 @export var limitShot:Control
-
 @export var stick:TextureRect
 
+var screenSize
+
 func _ready():
-	positionBase = Vector2(1673,671)
+	get_viewport().size_changed.connect(_on_screen_resized)
+	_on_screen_resized()
+	#Vector2(1673,671)
+
+func _on_screen_resized():
+	var screenSize = get_viewport().size
+	var windowSize = DisplayServer.window_get_size()
+	var offset_margin = screenSize.x * 0.1
+	positionBase = Vector2(screenSize.x - offset_margin,
+		screenSize.y - offset_margin)
+	global_position = positionBase
+		
+	print("Viewport size: ", screenSize)
+	print("Window size: ", windowSize)
+	print("Content scale factor: ", get_window().content_scale_factor)
+	print(positionBase)
 
 func return_to_pos():
-	position = positionBase
+	global_position = positionBase
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:

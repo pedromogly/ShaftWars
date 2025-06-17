@@ -78,7 +78,7 @@ grow_vertical = 2
 theme = ExtResource("1_l6cm7")
 
 [node name="SHaft" type="Sprite2D" parent="Background/PanelContainer"]
-position = Vector2(182, 158.5)
+position = Vector2(249, 305.5)
 scale = Vector2(0.265741, 0.265741)
 texture = ExtResource("5_8ln24")
 
@@ -103,7 +103,7 @@ bt_quit = NodePath("Button4")
 [node name="Button" type="Button" parent="Background/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_l6cm7")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 50
 text = "NEW GAME"
 
 [node name="Button2" type="Button" parent="Background/VBoxContainer"]
@@ -116,13 +116,13 @@ text = "load game"
 [node name="Button3" type="Button" parent="Background/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_l6cm7")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 50
 text = "options"
 
 [node name="Button4" type="Button" parent="Background/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_l6cm7")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 50
 text = "Quit"
 
 [node name="Animations" type="AnimationPlayer" parent="."]

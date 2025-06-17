@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://blr4ndgixbup0"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://blr4ndgixbup0"]
 
 [ext_resource type="FontFile" uid="uid://xtme0b36bw0n" path="res://assets/UI/Font/Kenney Future.ttf" id="1_10ecn"]
-[ext_resource type="Texture2D" uid="uid://c65j4dkvxlwcy" path="res://assets/UI/Vector/Grey/button_square_header_small_square_screws.svg" id="1_kg4np"]
 [ext_resource type="Texture2D" uid="uid://bdidjefnjfp5m" path="res://assets/UI/Vector/Green/bar_square_gloss_small_square.svg" id="2_h56oa"]
 [ext_resource type="Texture2D" uid="uid://brbd2igb6kpgv" path="res://assets/UI/Vector/Green/bar_square_large_square.svg" id="3_tyoaw"]
+[ext_resource type="Texture2D" uid="uid://cv15yga8qj7h" path="res://assets/UI/Vector/Extra/panel_glass_notches.svg" id="4_h56oa"]
+[ext_resource type="Texture2D" uid="uid://ccextv4g7ihmc" path="res://assets/UI/Vector/Grey/button_square_header_small_square.svg" id="5_dc67w"]
+[ext_resource type="FontFile" uid="uid://rh1tv8pjkmm6" path="res://assets/UI/Font/Kenney Future Narrow.ttf" id="5_tyoaw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10ecn"]
 content_margin_left = 4.0
@@ -64,18 +66,22 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bbk5l"]
-texture = ExtResource("1_kg4np")
-texture_margin_left = 30.0
-texture_margin_top = 18.0
-texture_margin_right = 30.0
-texture_margin_bottom = 30.0
-expand_margin_left = 10.0
-expand_margin_top = 20.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3e2go"]
+texture = ExtResource("4_h56oa")
+texture_margin_left = 17.0
+texture_margin_top = 17.0
+texture_margin_right = 17.0
+texture_margin_bottom = 17.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3fb7o"]
+texture = ExtResource("5_dc67w")
+texture_margin_left = 15.0
+texture_margin_top = 20.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
 
 [resource]
+default_font = ExtResource("5_tyoaw")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
@@ -100,4 +106,5 @@ Button/styles/focus = SubResource("StyleBoxFlat_h56oa")
 Button/styles/hover = SubResource("StyleBoxTexture_dc67w")
 Button/styles/normal = SubResource("StyleBoxTexture_y0csj")
 Button/styles/pressed = SubResource("StyleBoxFlat_tyoaw")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_bbk5l")
+Panel/styles/panel = SubResource("StyleBoxTexture_3e2go")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_3fb7o")

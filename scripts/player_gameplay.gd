@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var acceleration:= 400.0
 @export var friction:= 350.0
 
-@export var max_speed:= 400.0
+@export var max_speed:= 500.0
 var movement_speed:= 0.0
 var last_direction:= Vector2.ZERO
 
@@ -20,8 +20,9 @@ var sprite_player_instance = preload("res://prefabs/player_sprite.tscn")
 
 
 var bullet_preload = preload("res://prefabs/bullet.tscn")
-var shot_cooldown:float = 0.3
+var shot_cooldown:float = 0.25
 var can_shot:bool = true
+var isAlive:bool = true
 
 var max_hp:int = player.max_health
 var hp:int = max_hp
@@ -58,18 +59,19 @@ func fly_rotate():
 		body_base.rotation = baseShot.dir_length.angle()
 
 	
-	if baseShot.dir_length.length() > 50.0 and can_shot:
+	if baseShot.dir_length.length() > 30.0 and can_shot:
 		shot()
 		can_shot = false
 		await get_tree().create_timer(shot_cooldown).timeout
 		can_shot = true
 
 func shot():
-	var bullet_instance = bullet_preload.instantiate()
-	get_tree().current_scene.add_child(bullet_instance)
-	
-	bullet_instance.global_position = global_position
-	bullet_instance.set_direction_bullet(baseShot.direction)
+	if isAlive:
+		var bullet_instance = bullet_preload.instantiate()
+		get_tree().current_scene.add_child(bullet_instance)
+		
+		bullet_instance.global_position = global_position
+		bullet_instance.set_direction_bullet(baseShot.direction)
 
 func take_damage(dmg:int):
 	hp -= dmg
@@ -103,5 +105,6 @@ func die():
 	sprite.visible = false
 	dieExplosion.emitting = true
 	joystick.visible = false
+	isAlive = false
 	joystick.process_mode = Node.PROCESS_MODE_DISABLED
 	EventBus.player_die.emit()

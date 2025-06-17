@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dh0fwbth2kl64" path="res://scripts/Singletons/loading.gd" id="1_ir5ef"]
 
 [node name="Loading" type="CanvasLayer" node_paths=PackedStringArray("color_rect")]
+layer = 5
 script = ExtResource("1_ir5ef")
 color_rect = NodePath("ColorRect")
 

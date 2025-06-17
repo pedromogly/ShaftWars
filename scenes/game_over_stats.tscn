@@ -1,0 +1,155 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqujhg0dieneq"]
+
+[ext_resource type="Script" uid="uid://dkge16h8263nn" path="res://scripts/game_over_stats.gd" id="1_t6rin"]
+[ext_resource type="Theme" uid="uid://blr4ndgixbup0" path="res://Themes/main_menu.tres" id="2_g1tff"]
+[ext_resource type="Texture2D" uid="uid://4x1ytkxn5aja" path="res://assets/UI/Icons/crown.png" id="3_bl8wr"]
+[ext_resource type="Texture2D" uid="uid://b24xtuw51mcjg" path="res://assets/UI/Icons/award.png" id="4_bl8wr"]
+[ext_resource type="Shader" uid="uid://drhrkknejr4tq" path="res://Shaders/game_over_stats_class.gdshader" id="5_exbao"]
+[ext_resource type="FontFile" uid="uid://xtme0b36bw0n" path="res://assets/UI/Font/Kenney Future.ttf" id="5_myjbl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knhmw"]
+shader = ExtResource("5_exbao")
+shader_parameter/wave_amplitude = 20.0
+shader_parameter/wave_frequency = 90.0
+shader_parameter/movement_speed = 4.0
+shader_parameter/movement_amplitude = 8.0
+
+[node name="GameOver_Stats" type="Control" node_paths=PackedStringArray("button", "scoreText", "totalSurvive", "totalKills", "classAv")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t6rin")
+button = NodePath("Panel/Button")
+scoreText = NodePath("Panel/VBoxContainer/HBoxContainer/totalScorer")
+totalSurvive = NodePath("Panel/VBoxContainer/HBoxContainer2/totalSurvive")
+totalKills = NodePath("Panel/VBoxContainer/HBoxContainer3/totalKills")
+classAv = NodePath("Panel/VBoxContainer/HBoxContainer/Award/Class")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252
+anchor_top = 0.206
+anchor_right = 0.757
+anchor_bottom = 0.796
+offset_left = 0.160004
+offset_top = 0.519989
+offset_right = 0.559937
+offset_bottom = 0.319946
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_g1tff")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+anchor_left = 0.075
+anchor_top = 0.185
+anchor_right = 0.639
+anchor_bottom = 0.705
+offset_left = 0.25
+offset_top = 0.154999
+offset_right = 0.169922
+offset_bottom = -0.085022
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_g1tff")
+theme_override_colors/font_color = Color(0.182318, 0.182318, 0.182318, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Your Score: "
+
+[node name="Crown" type="Sprite2D" parent="Panel/VBoxContainer/HBoxContainer"]
+position = Vector2(455, -8)
+rotation = 0.559042
+scale = Vector2(0.304509, 0.304509)
+texture = ExtResource("3_bl8wr")
+
+[node name="totalScorer" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_g1tff")
+theme_override_colors/font_color = Color(0.882353, 0.768627, 0.0705882, 1)
+theme_override_colors/font_shadow_color = Color(0.206279, 0.206279, 0.206279, 1)
+theme_override_font_sizes/font_size = 36
+text = "000"
+
+[node name="Award" type="Sprite2D" parent="Panel/VBoxContainer/HBoxContainer"]
+position = Vector2(682.617, 54.2503)
+scale = Vector2(0.470215, 0.524974)
+texture = ExtResource("4_bl8wr")
+offset = Vector2(82.957, 123.066)
+
+[node name="Class" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Award"]
+material = SubResource("ShaderMaterial_knhmw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -329.0
+offset_bottom = -387.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.494118, 0.796078, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_myjbl")
+theme_override_font_sizes/font_size = 110
+text = "B+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_g1tff")
+theme_override_colors/font_color = Color(0.258541, 0.258541, 0.258541, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Seconds survived: "
+
+[node name="totalSurvive" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_g1tff")
+theme_override_colors/font_color = Color(0.129412, 0.72549, 0.552941, 1)
+theme_override_colors/font_shadow_color = Color(0.206279, 0.206279, 0.206279, 1)
+theme_override_font_sizes/font_size = 36
+text = "000"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("2_g1tff")
+theme_override_colors/font_color = Color(0.258541, 0.258541, 0.258541, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Enemy kill's: "
+
+[node name="totalKills" type="Label" parent="Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("2_g1tff")
+theme_override_colors/font_color = Color(0.941176, 0.294118, 0.372549, 1)
+theme_override_colors/font_shadow_color = Color(0.206279, 0.206279, 0.206279, 1)
+theme_override_font_sizes/font_size = 36
+text = "000"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 134.0
+offset_top = 487.0
+offset_right = -135.0
+offset_bottom = -82.0
+pivot_offset = Vector2(358, 34)
+theme_override_font_sizes/font_size = 40
+text = "Return to main menu"

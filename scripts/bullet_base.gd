@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var collision:Area2D
-var speed:float = 1800.0
+var speed:float = 2000.0
 var direction = Vector2.ZERO
 
 var min_damage:int = player.damage_base

@@ -31,7 +31,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.35, 2.7, 3),
 "transitions": PackedFloat32Array(2.73208, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-2416, -417), Vector2(-520, -416), Vector2(-520, -416), Vector2(1364, -403)]
+"values": [Vector2(-2416, 0), Vector2(0, 0), Vector2(0, 0), Vector2(1920, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tb63v"]
@@ -64,16 +64,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_ognuq")
 theme_override_font_sizes/font_size = 180
-text = "TESTE"
+text = "TESTE Maniaco"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="InfoStageLabel"]
-layout_mode = 0
-offset_left = -9.0
-offset_top = 1.0
-offset_right = 1889.0
-offset_bottom = 1055.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -1.853
+anchor_right = 1.0
+anchor_bottom = 2.831
+offset_left = -2416.0
+offset_top = 416.925
+offset_right = -2327.0
+offset_bottom = 417.025
 texture = ExtResource("2_hffrg")
 stretch_mode = 6
 

@@ -15,12 +15,18 @@ var last_direction:= Vector2.ZERO
 
 var sprite_player_instance = preload("res://prefabs/player_sprite.tscn")
 
-@onready var base = joystick.find_child("Joystick")
+@onready var base = joystick.find_child("Base")
 @onready var baseShot = joystick.find_child("BaseShot")
 
+enum state_effect {
+	DAMAGE_EFFECT,
+	CURE_EFFECT,
+	DEBUFF_EFFECT
+}
+var what_state = state_effect.DAMAGE_EFFECT
 
 var bullet_preload = preload("res://prefabs/bullet.tscn")
-var shot_cooldown:float = 0.25
+var shot_cooldown:float = 0.20
 var can_shot:bool = true
 var isAlive:bool = true
 
@@ -55,11 +61,9 @@ func fly_movement(delta):
 
 func fly_rotate():
 	#var mouse_position = get_global_mouse_position()
-	if baseShot.dir_length.length() > 40.0:
-		body_base.rotation = baseShot.dir_length.angle()
+	body_base.rotation = baseShot.direction.angle()
 
-	
-	if baseShot.dir_length.length() > 30.0 and can_shot:
+	if baseShot.dir_noNormalize.length() > 10.0 and can_shot:
 		shot()
 		can_shot = false
 		await get_tree().create_timer(shot_cooldown).timeout
@@ -78,8 +82,9 @@ func take_damage(dmg:int):
 	shake_damage()
 	print("AI MEU OVO: ",hp)
 	#System.display_damage(self,dmg,global_position)
+	what_state = state_effect.DAMAGE_EFFECT
 	EventBus.display_text_request.emit(self,dmg,global_position)
-	EventBus.send_hp.emit(hp,max_hp)
+	EventBus.send_hp.emit(hp,max_hp)#evento para enviar para a barra de hp
 	is_live()
 
 func is_live():
@@ -100,6 +105,14 @@ func shake_damage():
 	tween_pos.tween_property(sprite,"position",Vector2(15,0),0.05)
 	tween_pos.tween_property(sprite,"position",sprite_initial_pos,0.05)
 	
+
+func cure(amount):
+	what_state = state_effect.CURE_EFFECT
+	hp += amount
+	if hp > max_hp:
+		hp = max_hp
+	EventBus.send_hp.emit(hp,max_hp)
+	EventBus.display_text_request.emit(self,amount,global_position)
 
 func die():
 	sprite.visible = false

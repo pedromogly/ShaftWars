@@ -42,8 +42,10 @@ func display_text_damage(who:Node2D,damage:int,gposition:Vector2):
 	var displayText = display.instantiate()
 	displayText.text = str(damage)
 	displayText.global_position = gposition + offset
-	if who.is_in_group("player"):
+	if who.is_in_group("player") and who.what_state == who.state_effect.DAMAGE_EFFECT:
 		displayText.add_theme_color_override("font_color",Color.CRIMSON)
+	if who.is_in_group("player") and who.what_state == who.state_effect.CURE_EFFECT:
+		displayText.add_theme_color_override("font_color",Color.GREEN)
 	print(displayText)
 	add_child(displayText)
 	

@@ -2,7 +2,8 @@ extends TextureRect
 
 var positionBase:Vector2
 var direction:Vector2 = Vector2.ZERO
-var max_range_stick:float = 150.0
+var dir_noNormalize:Vector2 = Vector2.ZERO #direção para disparar (sem normalização)
+var max_range_stick:float = 200.0
 var touch_id:int = -1
 
 @export var limitShot:Control
@@ -16,12 +17,11 @@ func _ready():
 	#Vector2(1673,671)
 
 func _on_screen_resized():
-	var screenSize = get_viewport().size
-	var windowSize = DisplayServer.window_get_size()
-	var offset_margin = screenSize.x * 0.2
-	positionBase = Vector2(screenSize.x - offset_margin,
-		screenSize.y - offset_margin)
-	
+	var screenSize:Vector2 = get_viewport_rect().size
+	var marginX = screenSize.x * 0.3
+	var marginY = screenSize.y * 0.4
+	positionBase = Vector2(screenSize.x - marginX, screenSize.y - marginY)
+	return_to_pos()
 
 func return_to_pos():
 	position = positionBase
@@ -35,11 +35,13 @@ func _input(event: InputEvent) -> void:
 				position = local_pos - size / 2
 			else:
 				return_to_pos()
-				direction = Vector2.ZERO
+				#direction = Vector2.ZERO
+				dir_noNormalize = Vector2.ZERO
 				stick.position = (size / 2) - (stick.size / 2)
 		elif not event.pressed and event.index == touch_id:
 			touch_id = -1
-			direction = Vector2.ZERO
+			#direction = Vector2.ZERO
+			dir_noNormalize = Vector2.ZERO
 			stick.position = (size/2) - (stick.size/2)
 			return_to_pos()
 	elif event is InputEventScreenDrag and event.index == touch_id:
@@ -48,6 +50,6 @@ func _input(event: InputEvent) -> void:
 		
 		if relative.length() > max_range_stick:
 			relative = relative.normalized() * max_range_stick
-			
+		dir_noNormalize = relative
 		direction = relative.normalized()
 		stick.position = (size/2) - (stick.size/2) + relative#para mover o joystick aonde está pressionado

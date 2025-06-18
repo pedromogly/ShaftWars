@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bygbnv342520t"]
+
+[ext_resource type="Texture2D" uid="uid://6fb24s4lgfer" path="res://assets/enemies/circle.png" id="1_vddxh"]
+[ext_resource type="Script" uid="uid://dw7bbcuht05ib" path="res://scripts/narrow_explosive_vfx.gd" id="2_w8gw3"]
+
+[node name="narrow_explosive" type="CPUParticles2D"]
+emitting = false
+amount = 16
+texture = ExtResource("1_vddxh")
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 0.33
+lifetime_randomness = 0.09
+spread = 179.43
+gravity = Vector2(0, 0)
+initial_velocity_min = 240.5
+initial_velocity_max = 797.47
+scale_amount_min = 0.1
+scale_amount_max = 0.15
+script = ExtResource("2_w8gw3")

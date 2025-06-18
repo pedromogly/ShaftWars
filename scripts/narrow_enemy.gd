@@ -56,4 +56,8 @@ func player_die():
 func die():
 	print("NICE KILL!")
 	EventBus.enemy_die.emit(self)
+	var explosion_scene = preload("res://prefabs/VFX/narrow_explosive.tscn").instantiate()
+	get_tree().current_scene.add_child(explosion_scene)
+	explosion_scene.global_position = global_position
+	explosion_scene.emitting = true
 	queue_free()
